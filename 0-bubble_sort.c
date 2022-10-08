@@ -26,19 +26,21 @@ void bubble_sort(int *array, size_t size)
 {
 	size_t i, size_n;
 
-	size_n = size;
-	while (size_n > 1)
+	if (array && size > 0)
 	{
-		for (i = 1; i < size; i++)
+		size_n = size;
+		while (size_n > 1)
 		{
-			if (array[i - 1] > array[i])
+			for (i = 1; i < size; i++)
 			{
-				swap(array, i - 1, i);
-				size_n = i;
+				if (array[i - 1] > array[i])
+				{
+					swap(array, i - 1, i);
+					size_n = i;
+				}
 			}
+			size_n = size_n;
+			++i;
 		}
-		/* print_array(array, size); */
-		size_n = size_n;
-		++i;
 	}
 }
