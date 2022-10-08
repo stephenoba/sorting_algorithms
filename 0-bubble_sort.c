@@ -5,16 +5,16 @@
  * @array: Array
  * @ele_one: first element to swap
  * @ele_two: second element to swap
+ * @size: size of Array
  */
-void swap(int *array, int ele_one, int ele_two)
+void swap(int *array, int ele_one, int ele_two, size_t size)
 {
 	int temp;
 
-	print_array(array, 10);
 	temp = array[ele_one];
 	array[ele_one] = array[ele_two];
 	array[ele_two] = temp;
-	print_array(array, 10);
+	print_array(array, size);
 }
 
 /**
@@ -35,7 +35,7 @@ void bubble_sort(int *array, size_t size)
 			{
 				if (array[i - 1] > array[i])
 				{
-					swap(array, i - 1, i);
+					swap(array, i - 1, i, size);
 					size_n = i;
 				}
 			}
