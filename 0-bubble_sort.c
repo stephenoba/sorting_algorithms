@@ -29,7 +29,7 @@ void bubble_sort(int *array, size_t size)
 
 	if (array && size > 0)
 	{
-		while(swapped)
+		while (swapped)
 		{
 			swapped = 0;
 			for (i = 1; i < size; i++)
