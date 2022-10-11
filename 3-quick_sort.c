@@ -7,13 +7,31 @@
  * @j: second element
  * @size: size of Array
  */
-void swap(int *array, int i, int j, size_t size)
+void swap(int *array, int i, int j)
 {
 	int t = array[i];
 
 	array[i] = array[j];
 	array[j] = t;
-	print_array(array, size);
+}
+
+int partition(int *array, int low, int high)
+{
+	int pivot;
+	int i = (low - 1), j;
+
+	pivot = array[high];
+
+	for (j = low; j < high; j++)
+	{
+		if (array[j] < pivot)
+		{
+			i++;
+			swap(array, i, j);
+		}
+	}
+	swap(array, i + 1, high);
+	return (i + 1);
 }
 
 /**
@@ -23,30 +41,17 @@ void swap(int *array, int i, int j, size_t size)
  * @high: High
  * @size: array size
  */
-void sort(int *array, size_t low, size_t high, size_t size)
+void sort(int *array, int low, int high, size_t size)
 {
-	size_t i, j, pivot;
+	int pivot;
 
 	if (low < high)
 	{
-		pivot = low;
-		i = low;
-		j = high;
+		pivot = partition(array, low, high);
 
-		while (i < j)
-		{
-			while (array[i] <= array[pivot] && i < high)
-				i++;
-			while (array[j] > array[pivot])
-				j--;
-			if (i < j)
-			{
-				swap(array, i, j, size);
-			}
-		}
-		swap(array, pivot, j, size);
-		sort(array, low, j - 1, size);
-		sort(array, j + 1, high, size);
+		sort(array, low, pivot - 1, size);
+		sort(array, pivot + 1, high, size);
+		print_array(array, size);
 	}
 }
 
