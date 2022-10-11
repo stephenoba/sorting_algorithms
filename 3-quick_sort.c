@@ -7,15 +7,20 @@
  * @j: second element
  * @size: size of Array
  */
-void swap(int *array, int i, int j)
+void swap(int *array, int i, int j, size_t size)
 {
-	int t = array[i];
+	int t;
 
-	array[i] = array[j];
-	array[j] = t;
+	if (i != j)
+	{
+		t = array[i];
+		array[i] = array[j];
+		array[j] = t;
+		print_array(array, size);
+	}
 }
 
-int partition(int *array, int low, int high)
+int partition(int *array, int low, int high, size_t size)
 {
 	int pivot;
 	int i = (low - 1), j;
@@ -27,10 +32,10 @@ int partition(int *array, int low, int high)
 		if (array[j] < pivot)
 		{
 			i++;
-			swap(array, i, j);
+			swap(array, i, j, size);
 		}
-	}
-	swap(array, i + 1, high);
+}
+	swap(array, i + 1, high, size);
 	return (i + 1);
 }
 
@@ -47,11 +52,10 @@ void sort(int *array, int low, int high, size_t size)
 
 	if (low < high)
 	{
-		pivot = partition(array, low, high);
+		pivot = partition(array, low, high, size);
 
 		sort(array, low, pivot - 1, size);
 		sort(array, pivot + 1, high, size);
-		print_array(array, size);
 	}
 }
 
