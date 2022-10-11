@@ -45,7 +45,12 @@ void rswap(listint_t **list, listint_t *current, listint_t *new_node)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current = *list, *next;
+	listint_t *current, *next;
+
+	if (list == NULL)
+		return;
+
+	current = *list;
 
 	while (current != NULL && current->next != NULL)
 	{
