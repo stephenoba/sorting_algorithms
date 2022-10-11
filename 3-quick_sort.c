@@ -20,6 +20,15 @@ void swap(int *array, int i, int j, size_t size)
 	}
 }
 
+/**
+ * partition - partition array
+ * @array: Array to be partitioned
+ * @low: Low limit
+ * @high: high limit
+ * @size: size of array
+ *
+ * Return: position to partition array
+ */
 int partition(int *array, int low, int high, size_t size)
 {
 	int pivot;
