@@ -25,19 +25,19 @@ void swap(int *array, int ele_one, int ele_two, size_t size)
 void bubble_sort(int *array, size_t size)
 {
 	size_t i;
-	int swapped = 1;
+	int swapped = true;
 
 	if (array && size > 0)
 	{
 		while (swapped)
 		{
-			swapped = 0;
+			swapped = false;
 			for (i = 1; i < size; i++)
 			{
 				if (array[i - 1] > array[i])
 				{
 					swap(array, i - 1, i, size);
-					swapped = 1;
+					swapped = true;
 				}
 			}
 			++i;
